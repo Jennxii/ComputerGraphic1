@@ -1,0 +1,43 @@
+1. Warum ist es besser, Triangles zum Beschreiben eines Surface Meshes zu verwenden, als z.B.
+Quads? (Quads wurden früher von einigen Grafik APIs wie z.B. auch OpenGL unterstützt,
+aber später deprecated – aus genau diesem Grund…)
+
+Weil man die intersection of a ray mit dieser form gut optimieren kann und es ist leichter durchzuführen als mit NURBS. Es kan jedes Objekt in Triangles beschrieben werden. Man braucht nur mehr einen Code der die Routine schreibt, welche andere geometrischen Formen in Triangle-Meshes umwandelt.
+
+--------------------------------------------------------------------------------------------------------
+ 
+2. Was ist der Unterschied zwischen Frontfacing und Backfacing Triangles? Für wieviel % der
+Triangles in einer Szene kann man sich das Rendern ersparen, wenn man Backface Culling
+aktiviert? (Schätzen Sie einfach).
+
+Frontfacing ist, wenn die Oberfläche die zur Kamera hinsieht. Backfacing ist das Gegenteil, wenn es wegschaut von der Kamera.
+Bei Backface Culling, werden die Oberflächen nicht gezeichnet, die nicht zur Kamera schauen, weil es unnötig wäre.
+Ich schätze man könnte sich ca. 50 % ersparen
+Aber diese Methode ist nicht gut, wenn man Schatten haben will. Oder Reflexionen.
+
+--------------------------------------------------------------------------------------------------------
+3. Wie funktioniert der Inside-Out Test, mit dem bei der Ray-Triangle Intersection festgestellt
+wird, ob ein Intersection Point auch wirklich innerhalb des Triangles liegt?
+
+Zuerst muss man die Normale finden des Triangle. Dann ob Ray und Triangle parallel sind. Wenn sie es sind, dann failed es. Aber wenn sie nicht parallel sind, dann berechnen wir t, von dem wir den Intersection Point P berechnen können. (Wir schauen dann ob P auf der linken Seite von jeder Kante ist, dann ist er succesful)
+
+--------------------------------------------------------------------------------------------------------
+4. Im Teil 1 des Programmier-Assignments, auf Slide 29, zeige ich verschiedene Beispiel-
+Bilderwie die Beleuchtung der Szene aussehen kann. Sowohl im linken, als auch im mittleren
+Bild ist die Lichtquellequasi „an der Y-Achse“ – (0, -1.5f, 0) im Linken, (0, 3, 0) im Mittleren.
+Warum ist die Beleuchtung des Bodens so unterschiedlich, wo die Lichtquelle doch beide
+Male über dem Boden ist? (Die Antwort liegt im dot-Product in der Formel.)
+
+Im ersten Bild ist die Lichtquelle unter dem Objekt. Genau zwischen Floor und Objekt. Im mittleren Bild liegt sie über dem Objekt.
+Da das Licht weiter oben ist, ist L länger und beleuchtet mehr Boden.
+
+--------------------------------------------------------------------------------------------------------
+5. Im Teil 2 des Programmier-Assignments (Schatten), werden teilweise atm. völlig umsonst
+Schattenberechungen durchgeführt – es hängt damit zusammen, wie wir die Sichtbarkeit der
+Intersections handhaben. Wie könnten Sie den Code in Raytracer::renderScene so
+umbauen, dass pro Kamera-Ray nur mehr ein einziger Shadow-Ray gecastet werden muss?
+(Sie können die Lösung auch gern programmieren )
+
+1. das näheste Dreieck zur Kamera finden (für jeweiligen Kamera-Ray)
+2. Mit diesem Dreieck dann die Schatten berechnen
+-> es werden dadurch keine unnötigen Berechnungen für Schatten gemacht.
