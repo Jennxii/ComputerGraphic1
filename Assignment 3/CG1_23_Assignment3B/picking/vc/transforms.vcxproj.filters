@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="app.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="oglhelper.cpp" />
+    <ClCompile Include="cg\buffer.cpp">
+      <Filter>cg</Filter>
+    </ClCompile>
+    <ClCompile Include="cg\glsl.cpp">
+      <Filter>cg</Filter>
+    </ClCompile>
+    <ClCompile Include="cg\primitives.cpp">
+      <Filter>cg</Filter>
+    </ClCompile>
+    <ClCompile Include="cg\triangle_mesh.cpp">
+      <Filter>cg</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="cg">
+      <UniqueIdentifier>{129c30f8-404e-4e1d-b1b8-883f7eac4d3c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app.hpp" />
+    <ClInclude Include="oglhelper.hpp" />
+    <ClInclude Include="cg\triangle_mesh.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\buffer.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\cg_app.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\cg_window.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\debug_output.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\glm.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\glsl.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\ogl.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+    <ClInclude Include="cg\primitives.hpp">
+      <Filter>cg</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
